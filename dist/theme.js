@@ -1,29 +1,29 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var theme = {
     space: {
         small: 12,
         medium: 20,
-        large: 32
+        large: 32,
     },
     fonts: {
         body: "Tahoma",
         heading: "inherit",
-        monospace: "Menlo, monospace"
+        monospace: "Menlo, monospace",
     },
     fontSizes: {
         small: 20,
         medium: 26,
-        large: 53
+        large: 53,
     },
     fontWeights: {
         body: 700,
         heading: 700,
-        bold: 700
+        bold: 700,
     },
     lineHeights: {
         body: 1.5,
-        heading: 1.125
+        heading: 1.125,
     },
     colors: {
         text: "#ffffff",
@@ -32,16 +32,16 @@ var theme = {
         secondary: "#000040",
         muted: "#808080",
         border: "#808080",
-        yellow: "#FFFF00"
+        yellow: "#FFFF00",
     },
     styles: {
         root: {
-            background: "linear-gradient(#000000, #030991)"
+            background: "linear-gradient(#000000, #030991)",
         },
         button: {
             fontFamily: "body",
-            fontWeight: "body"
-        }
+            fontWeight: "body",
+        },
     },
     buttons: {
         primary: {
@@ -55,18 +55,18 @@ var theme = {
             paddingX: "medium",
             userSelect: "none",
             "&:hover:enabled": {
-                borderColor: "white"
+                borderColor: "white",
             },
             "&:active:enabled": {
                 backgroundColor: "secondary",
                 color: "white",
-                borderColor: "yellow"
+                borderColor: "yellow",
             },
             "&:disabled": {
                 pointerEvents: "none",
-                opacity: 0.5
-            }
-        }
-    }
+                opacity: 0.5,
+            },
+        },
+    },
 };
-exports["default"] = theme;
+exports.default = theme;
