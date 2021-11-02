@@ -8,13 +8,13 @@ const theme: Theme = {
   },
   fonts: {
     body: "Tahoma",
-    heading: "inherit",
+    heading: "Tahoma",
     monospace: "Menlo, monospace",
   },
   fontSizes: {
-    small: 20,
-    medium: 26,
-    large: 53,
+    small: 16,
+    medium: 24,
+    large: 48,
   },
   fontWeights: {
     body: 700,
@@ -37,6 +37,9 @@ const theme: Theme = {
   styles: {
     root: {
       background: "linear-gradient(#000000, #030991)",
+      fontFamily: "body",
+      fontSize: "medium",
+      minHeight: "100vh",
     },
     button: {
       fontFamily: "body",
@@ -47,10 +50,11 @@ const theme: Theme = {
     primary: {
       bg: "background",
       color: "muted",
-      border: "2px solid",
+      border: "3px solid",
       borderColor: "border",
       fontFamily: "body",
       fontWeight: "body",
+      fontSize: "medium",
       paddingY: "small",
       paddingX: "medium",
       userSelect: "none",
