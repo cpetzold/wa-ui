@@ -5,10 +5,12 @@ import {
   Box as TUIBox,
   Button as TUIButton,
   Flex as TUIFlex,
+  Grid as TUIGrid,
   Heading as TUIHeading,
   HeadingProps as TUIHeadingProps,
+  Input as TUIInput,
   ThemeProvider as TUIThemeProvider,
-  Themed,
+  ThemeUIStyleObject,
 } from "theme-ui";
 import React, { TableHTMLAttributes } from "react";
 
@@ -21,6 +23,8 @@ export function ThemeProvider({ children }: { children?: React.ReactNode }) {
 
 export const Box = TUIBox;
 export const Flex = TUIFlex;
+export const Grid = TUIGrid;
+export const Input = TUIInput;
 
 export function Foo() {
   return <TUIHeading>Foo!</TUIHeading>;
@@ -55,12 +59,14 @@ export function Button(props: ButtonProps) {
 export function Frame({
   title,
   children,
+  sx,
 }: {
   title: React.ReactNode;
   children?: React.ReactNode;
+  sx?: ThemeUIStyleObject;
 }) {
   return (
-    <Flex sx={{ flexDirection: "column", flex: 1, width: "100%" }}>
+    <Flex sx={{ flexDirection: "column", flex: 1, width: "100%", ...sx }}>
       <Flex sx={{ alignItems: "center", gap: 4, marginBottom: -16 }}>
         <Box sx={{ flex: 1, height: 3, backgroundColor: "border" }} />
         <Heading sx={{ color: "muted" }}>{title}</Heading>
@@ -78,6 +84,98 @@ export function Frame({
   );
 }
 
-export function Table(props: TableHTMLAttributes<HTMLTableElement>) {
-  return <table {...props} sx={{ backgroundColor: "secondary" }} />;
+export function Panel({
+  children,
+  sx,
+}: {
+  children?: React.ReactNode;
+  sx?: ThemeUIStyleObject;
+}) {
+  return (
+    <Flex
+      sx={{
+        flexDirection: "column",
+        flex: 1,
+        width: "100%",
+        backgroundColor: "secondary",
+        border: "2px solid",
+        borderColor: "border",
+        padding: "small",
+        ...sx,
+      }}
+    >
+      {children}
+    </Flex>
+  );
+}
+
+interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
+  headers: string[];
+  sx?: ThemeUIStyleObject;
+}
+
+export function GridCell({
+  children,
+  sx,
+  className,
+}: {
+  children: React.ReactNode;
+  sx?: ThemeUIStyleObject;
+  className?: string;
+}) {
+  return (
+    <Box sx={{ padding: "small", ...sx }} className={className}>
+      {children}
+    </Box>
+  );
+}
+
+export function Table({ sx, headers, children, ...props }: TableProps) {
+  return (
+    <Flex
+      sx={{
+        flexDirection: "column",
+        backgroundColor: "secondary",
+        border: "2px solid",
+        borderColor: "border",
+        ...sx,
+      }}
+      {...props}
+    >
+      <Grid
+        sx={{
+          gridTemplateColumns: `repeat(${headers.length}, 1fr)`,
+          backgroundColor: "black",
+          color: "muted",
+          borderBottom: "2px solid",
+          borderColor: "border",
+          gap: 0,
+          fontSize: "small",
+        }}
+      >
+        {headers.map((header) => (
+          <GridCell
+            key={header}
+            sx={{
+              ":not(:last-child)": {
+                borderRight: "2px solid",
+                borderColor: "border",
+              },
+            }}
+          >
+            {header}
+          </GridCell>
+        ))}
+      </Grid>
+      <Grid
+        sx={{
+          gridTemplateColumns: `repeat(${headers.length}, 1fr)`,
+          gap: 0,
+          overflow: "auto",
+        }}
+      >
+        {children}
+      </Grid>
+    </Flex>
+  );
 }

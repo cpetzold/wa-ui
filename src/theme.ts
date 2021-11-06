@@ -2,9 +2,9 @@ import type { Theme } from "theme-ui";
 
 const theme: Theme = {
   space: {
-    small: 12,
-    medium: 20,
-    large: 32,
+    small: 4,
+    medium: 8,
+    large: 16,
   },
   fonts: {
     body: "Tahoma",
@@ -12,9 +12,9 @@ const theme: Theme = {
     monospace: "Menlo, monospace",
   },
   fontSizes: {
-    small: 16,
-    medium: 24,
-    large: 48,
+    small: 14,
+    medium: 16,
+    large: 24,
   },
   fontWeights: {
     body: 700,
